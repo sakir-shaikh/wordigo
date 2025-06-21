@@ -4,7 +4,7 @@ import Layout from "./components/layouts/Layout";
 import Welcome from "./components/layouts/Welcome";
 
 function App() {
-  const selectedPage = 0;
+  const selectedPage = 1;
   const pages = {
     0: <Welcome />,
     1: <Dashboard />,

@@ -1,8 +1,14 @@
-
+import Stats from "../Stats";
+import Countdown from "../Countdown";
+import History from "../History";
 function Dashboard() {
   return (
-    <div>Dashboard</div>
-  )
+    <section id="dashboard">
+      <Stats />
+      <Countdown />
+      <History />
+    </section>
+  );
 }
 
-export default Dashboard
+export default Dashboard;
