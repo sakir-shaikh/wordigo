@@ -52,7 +52,17 @@ function App() {
         setName={setName}
       />
     ),
-    1: <Dashboard name={name} attempts={attempts} PLAN={PLAN} day={day} />,
+    1: (
+      <Dashboard
+        name={name}
+        attempts={attempts}
+        PLAN={PLAN}
+        day={day}
+        dayWords={dayWords}
+        handleChangePage={handleChangePage}
+        datetime={datetime}
+      />
+    ),
     2: <Challenge />,
   };
 
