@@ -90,6 +90,57 @@ section {
   place-items: center;
   padding: 1rem 2rem;
 }
+
+/* DASHBOARD */
+
+.stats-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.welcome-text {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.stats-column {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.level {
+  min-height: 40px;
+  display: flex;
+  align-items: stretch;
+  gap: 1px;
+  border-radius: var(--border-radius-small);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.level > div:first-of-type {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 5;
+}
+
+.level-bar {
+  flex: 1;
+  background-color: var(--color-link-transparent);
+}
+
+/* this xp part will eventually fill up the progress bar one by one  */
+.xp {
+  position: absolute;
+}
 /* MEDIA  */
 /* When we approach for building the responsive web-app try to build first for the mobile device first and then after that apply larger css for the bigger screen. */
 @media (min-width: 640px) {
