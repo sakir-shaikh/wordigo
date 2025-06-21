@@ -4,7 +4,7 @@ import Layout from "./components/layouts/Layout";
 import Welcome from "./components/layouts/Welcome";
 
 function App() {
-  const selectedPage = 1;
+  const selectedPage = 2; //for displaying the challenge page
   const pages = {
     0: <Welcome />,
     1: <Dashboard />,
