@@ -1,3 +1,5 @@
+/* GENERAL */
+
 #root {
   min-height: 100vh;
   max-width: 700px;
@@ -16,4 +18,49 @@ main {
 main {
   flex: 1;
   /* this tell the main to occupy as much as space that it's parent allowed.  */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* PORTAL */
+
+/* FOOTER */
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding: 3rem, 0;
+  padding-bottom: 4rem;
+}
+
+footer a {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 0.3rem;
+  padding-right: 0.5rem;
+  background: var(--background-muted);
+  border-radius: 4rem;
+  border: 1px solid transparent;
+  transition-duration: 200ms;
+  text-decoration: none;
+  gap: 0.5rem;
+}
+
+footer a:hover {
+  border-color: var(--color-link);
+}
+
+footer a img {
+  max-width: 30px;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
+}
+
+/* MEDIA  */
+/* When we approach for building the responsive web-app try to build first for the mobile device first and then after that apply larger css for the bigger screen. */
+@media (min-width: 640px) {
+  /*TODO : write a responsive query for this  */
 }
