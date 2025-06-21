@@ -59,6 +59,37 @@ footer a img {
   border-radius: 100%;
 }
 
+/* SECTION  */
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* WELCOME PAGE  */
+#welcome {
+  flex: 1;
+  justify-content: center;
+  gap: 1.5rem;
+  padding-top: 1rem;
+}
+
+#welcome div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#welcome input {
+  font-size: 2rem;
+  max-width: 100%;
+}
+
+#welcome button {
+  display: grid;
+  place-items: center;
+  padding: 1rem 2rem;
+}
 /* MEDIA  */
 /* When we approach for building the responsive web-app try to build first for the mobile device first and then after that apply larger css for the bigger screen. */
 @media (min-width: 640px) {
