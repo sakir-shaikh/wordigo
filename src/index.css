@@ -129,18 +129,22 @@ section {
   inset: 0;
   display: grid;
   place-items: center;
-  z-index: 5;
+  z-index: 4;
 }
 
 .level-bar {
   flex: 1;
-  background-color: var(--color-link-transparent);
+  background: var(--color-link-transparent);
 }
 
-/* this xp part will eventually fill up the progress bar one by one  */
 .xp {
   position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: var(--color-link);
 }
+
 /* MEDIA  */
 /* When we approach for building the responsive web-app try to build first for the mobile device first and then after that apply larger css for the bigger screen. */
 @media (min-width: 640px) {
