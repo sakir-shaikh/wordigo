@@ -52,7 +52,7 @@ function App() {
         setName={setName}
       />
     ),
-    1: <Dashboard name={name} />,
+    1: <Dashboard name={name} attempts={attempts} PLAN={PLAN} day={day} />,
     2: <Challenge />,
   };
 
