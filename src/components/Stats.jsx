@@ -22,7 +22,7 @@ function Stats(props) {
         </div>
         <div>
           <p>Accuracy (%)</p>
-          <h4>{calculateAccuracy(attempts, day).toFixed(1) * 100}</h4>
+          <h4>{(calculateAccuracy(attempts, day) * 100).toFixed(1)}</h4>
         </div>
       </div>
       <ProgressBar text={`lvl ${flooredLevel}`} remainder={remainder} />

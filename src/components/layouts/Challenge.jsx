@@ -16,20 +16,14 @@ export default function Challenge(props) {
   const [wordIndex, setWordIndex] = useState(0);
   const [inputVal, setInputVal] = useState("");
   const [showDefintion, setShowDefinition] = useState(false);
-  const [listToLearn, setListToLearn] = useState([
-    ...dayWords,
-    ...shuffle(dayWords),
-    ...shuffle(dayWords),
-    ...shuffle(dayWords),
-  ]);
+  const [listToLearn, setListToLearn] = useState([...dayWords]);
 
   const word = listToLearn[wordIndex];
   const isNewWord =
-    showDefintion ||
-    (!isEncountered(day, word) && wordIndex < dayWords.length);
+    showDefintion || (!isEncountered(day, word) && wordIndex < dayWords.length);
   const defintion = DEFINITIONS[word];
 
-  function giveUp() {
+  function handleIforget() {
     setListToLearn([...listToLearn, word]);
     setShowDefinition(true);
   }
@@ -97,7 +91,7 @@ export default function Challenge(props) {
         >
           <h6>Quit</h6>
         </button>
-        <button onClick={giveUp} className="card-button-primary">
+        <button onClick={handleIforget} className="card-button-primary">
           <h6>I forgot</h6>
         </button>
       </div>
