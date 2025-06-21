@@ -1,4 +1,4 @@
-function Welcome() {
+function Welcome({ name, setName, handleCreateAccount }) {
   return (
     <section id="welcome">
       <h3 className="text-large special-shadow">
@@ -12,8 +12,20 @@ function Welcome() {
         start Challenge today!
       </h6>
       <div id="input">
-        <input type="text" placeholder="wirte your name..." />
-        <button>
+        <input
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+          type="text"
+          placeholder="wirte your name..."
+        />
+        <button
+          disabled={!name}
+          onClick={() => {
+            handleCreateAccount(name);
+          }}
+        >
           <h6>start &rarr;</h6>
         </button>
       </div>
