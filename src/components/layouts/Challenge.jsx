@@ -6,22 +6,22 @@ function Challenge(props) {
   const {
     day,
     daysWords,
-    handleChangePage,
-    handleIncrementAttempts,
-    handleCompleteDay,
+    // hgandleChangePage,
+    // handleIncrementAttempts,
+    // handleCompleteDay,
     PLAN,
   } = props;
 
   const [wordIndex, setWordIndex] = useState(0);
-  const [inputVal, setInputVal] = useState("");
-  const [showDefintion, setShowDefinition] = useState(false);
+
+  // const [inputVal, setInputVal] = useState("");
+  const [showDefintion, setShowDefintion] = useState(false);
   const [listToLearn, setListToLearn] = useState([
     ...daysWords,
-    ...shuffle(daysWords)
+    ...shuffle(daysWords),
   ]);
 
   const word = listToLearn[wordIndex];
-  console.log("word", word);
   const isNewWord =
     showDefintion ||
     (!isEncountered(day, word) && wordIndex < daysWords.length);
