@@ -5,7 +5,6 @@ function Stats(props) {
   const currentLevel = calcLevel(day);
   const flooredLevel = Math.floor(currentLevel);
   const remainder = (currentLevel - flooredLevel) * 100;
-  console.log(currentLevel);
   return (
     <div className="card stats-card">
       <div className="welcome-text">

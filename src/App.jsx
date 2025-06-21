@@ -44,6 +44,28 @@ function App() {
     handleChangePage(1);
   };
 
+  function handleCompleteDay() {
+    const newDay = day + 1;
+    const newDatetime = Date.now();
+    setDay(newDay);
+    setDatetime(newDatetime);
+
+    localStorage.setItem(
+      "day",
+      JSON.stringify({
+        day: newDay,
+        datetime: newDatetime,
+      })
+    );
+    setSelectedPage(1);
+  }
+
+  const handleIncrementAttempts = () => {
+    const newAttempt = attempts + 1;
+    localStorage.setItem("attempts", newAttempt);
+    setAttempts(newAttempt);
+  };
+
   const pages = {
     0: (
       <Welcome
@@ -64,7 +86,16 @@ function App() {
         history={history}
       />
     ),
-    2: <Challenge />,
+    2: (
+      <Challenge
+        PLAN={PLAN}
+        handleChangePage={handleChangePage}
+        day={day}
+        dayWords={dayWords}
+        handleCompleteDay={handleCompleteDay}
+        handleIncrementAttempts={handleIncrementAttempts}
+      />
+    ),
   };
 
   return <Layout>{pages[selectedPage]}</Layout>;
