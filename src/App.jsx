@@ -4,13 +4,14 @@ import Layout from "./components/layouts/Layout";
 import Welcome from "./components/layouts/Welcome";
 
 function App() {
-  return (
-    <Layout>
-      <Welcome />
-      <Dashboard />
-      <Challenge />
-    </Layout>
-  );
+  const selectedPage = 0;
+  const pages = {
+    0: <Welcome />,
+    1: <Dashboard />,
+    2: <Challenge />,
+  };
+
+  return <Layout>{pages[selectedPage]}</Layout>;
 }
 
 export default App;
