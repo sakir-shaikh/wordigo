@@ -1,6 +1,6 @@
 /*eslint-disable */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Challenge from "./components/layouts/Challenge";
 import Dashboard from "./components/layouts/Dashboard";
 import Layout from "./components/layouts/Layout";
@@ -8,6 +8,17 @@ import Welcome from "./components/layouts/Welcome";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState(0);
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    if (!localStorage) {
+      return;
+    }
+    if (localStorage.getItem("username")) {
+      setName(localStorage.getItem("username"));
+      setSelectedPage(1);
+    }
+  }, []);
 
   const handleChangePage = (pageIndex) => {
     setSelectedPage((prviousValue) => {
@@ -22,7 +33,7 @@ function App() {
     localStorage.setItem("username", name);
     handleChangePage(1);
   };
-  const [name, setName] = useState("");
+
   const pages = {
     0: (
       <Welcome
@@ -31,7 +42,7 @@ function App() {
         setName={setName}
       />
     ),
-    1: <Dashboard />,
+    1: <Dashboard name={name} />,
     2: <Challenge />,
   };
 
