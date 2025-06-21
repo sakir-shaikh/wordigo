@@ -196,6 +196,68 @@ section {
   flex-direction: column;
   gap: 0.3rem;
 }
+
+#challenge {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 1rem;
+}
+
+.challenge-btns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.challenge-btns button {
+  display: grid;
+  width: 100%;
+  place-items: center;
+}
+
+.challenge-btns button h6 {
+  white-space: nowrap;
+  padding: 0.5rem 0;
+}
+
+.helper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.helper input {
+  width: 100%;
+  text-align: center;
+}
+
+.helper div:first-of-type {
+  display: flex;
+  flex-direction: row;
+}
+
+.helper div div {
+  background: var(--color-link-transparent);
+  height: 6px;
+  flex: 1;
+  border-radius: var(--border-radius-small);
+}
+
+/* this will apply when we enter the right defination */
+.correct {
+  background: var(--color-link) !important;
+}
+
+/* and this will apply for the wrong definations. */
+.incorrect {
+  background: oklch(0.656 0.241 354.308) !important;
+}
+
 /* MEDIA  */
 /* When we approach for building the responsive web-app try to build first for the mobile device first and then after that apply larger css for the bigger screen. */
 @media (min-width: 640px) {

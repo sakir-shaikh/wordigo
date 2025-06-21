@@ -10,12 +10,15 @@ function Challenge() {
       <p>{defination}</p>
       <div className="helper">
         {/* error correction visual bars */}
-        {[...Array(defination.length).keys()].map((item, _index) => {
-          // we are going to show the user if it's input vlaue is correct or not with the blue and red boxes for the each word they typed in the input box.
-          return <div key={_index}>{item}</div>;
-        })}
+        <div>
+          {[...Array(defination.length).keys()].map((item, _index) => {
+            // we are going to show the user if it's input vlaue is correct or not with the blue and red boxes for the each word they typed in the input box.
+            return <div key={_index}></div>;
+          })}
+        </div>
+        <input type="text" placeholder="enter the defination..." />
       </div>
-      <input type="text" placeholder="enter the defination..." />
+
       <div className="challenge-btns">
         <button className="card-button-secondary">
           <h6>I Quit 😞 </h6>
