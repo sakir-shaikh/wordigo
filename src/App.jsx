@@ -5,11 +5,16 @@ import Challenge from "./components/layouts/Challenge";
 import Dashboard from "./components/layouts/Dashboard";
 import Layout from "./components/layouts/Layout";
 import Welcome from "./components/layouts/Welcome";
+import WORDS from "./data/VOCAB.json";
+import { getWordByIndex, PLAN } from "./utils/index.js";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState(0);
   const [name, setName] = useState("");
-
+  const [day, setDay] = useState(1);
+  const [datetime, setDatetime] = useState(null);
+  const [history, setHistory] = useState([]);
+  const [attempts, setAttempts] = useState(0);
   useEffect(() => {
     if (!localStorage) {
       return;
@@ -19,6 +24,11 @@ function App() {
       setSelectedPage(1);
     }
   }, []);
+
+  const dayWords = PLAN[day].map((_index) => {
+    return getWordByIndex(WORDS, _index).word;
+  });
+  console.log(dayWords);
 
   const handleChangePage = (pageIndex) => {
     setSelectedPage((prviousValue) => {

@@ -1,5 +1,5 @@
 // import PLAN from './year_plan.json'
-import WORDS from "./VOCAB.json";
+import WORDS from "../data/VOCAB.json";
 export function countdownIn24Hours(targetUTCMillis) {
   const currentTime = Date.now(); // Get current UTC time in milliseconds
   const endOfDay = targetUTCMillis + 24 * 60 * 60 * 1000; // 24 hours after target time
