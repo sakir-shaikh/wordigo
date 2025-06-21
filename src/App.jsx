@@ -61,6 +61,7 @@ function App() {
         dayWords={dayWords}
         handleChangePage={handleChangePage}
         datetime={datetime}
+        history={history}
       />
     ),
     2: <Challenge />,
