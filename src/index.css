@@ -1,0 +1,19 @@
+#root {
+  min-height: 100vh;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+header,
+footer,
+main {
+  padding: 1rem;
+}
+
+main {
+  flex: 1;
+  /* this tell the main to occupy as much as space that it's parent allowed.  */
+}

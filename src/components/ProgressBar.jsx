@@ -1,7 +1,5 @@
 function ProgressBar() {
-  return (
-    <div>ProgressBar</div>
-  )
+  return <div>ProgressBar</div>;
 }
 
-export default ProgressBar
+export default ProgressBar;

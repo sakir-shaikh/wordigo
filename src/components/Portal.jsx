@@ -1,7 +1,5 @@
 function Portal() {
-  return (
-    <div>Portal</div>
-  )
+  return <div>Portal</div>;
 }
 
-export default Portal
+export default Portal;
