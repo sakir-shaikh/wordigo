@@ -2,59 +2,109 @@ import { useState } from "react";
 import ProgressBar from "../ProgressBar";
 import { isEncountered, shuffle } from "../../utils";
 import DEFINITIONS from "../../data/VOCAB.json";
-function Challenge(props) {
+
+export default function Challenge(props) {
   const {
     day,
-    daysWords,
-    // hgandleChangePage,
-    // handleIncrementAttempts,
-    // handleCompleteDay,
+    dayWords,
+    handleChangePage,
+    handleIncrementAttempts,
+    handleCompleteDay,
     PLAN,
   } = props;
 
   const [wordIndex, setWordIndex] = useState(0);
-
-  // const [inputVal, setInputVal] = useState("");
-  const [showDefintion, setShowDefintion] = useState(false);
+  const [inputVal, setInputVal] = useState("");
+  const [showDefintion, setShowDefinition] = useState(false);
   const [listToLearn, setListToLearn] = useState([
-    ...daysWords,
-    ...shuffle(daysWords),
+    ...dayWords,
+    ...shuffle(dayWords),
+    ...shuffle(dayWords),
+    ...shuffle(dayWords),
   ]);
 
   const word = listToLearn[wordIndex];
   const isNewWord =
     showDefintion ||
-    (!isEncountered(day, word) && wordIndex < daysWords.length);
-  console.log("is newword", isNewWord);
+    (!isEncountered(day, word) && wordIndex < dayWords.length);
+  const defintion = DEFINITIONS[word];
 
-  const defination = DEFINATIONS[word];
-  console.log(defination);
+  function giveUp() {
+    setListToLearn([...listToLearn, word]);
+    setShowDefinition(true);
+  }
+
   return (
     <section id="challenge">
       <h1>{word}</h1>
-      {isNewWord && <p>{defination}</p>}
+      {isNewWord && <p>{defintion}</p>}
       <div className="helper">
-        {/* error correction visual bars */}
         <div>
-          {[...Array(defination.length).keys()].map((item, _index) => {
-            // we are going to show the user if it's input vlaue is correct or not with the blue and red boxes for the each word they typed in the input box.
-            return <div key={_index}></div>;
+          {/* CONTAINS ALL THE ERROR CORRECTIOB VISUAL BARS */}
+          {[...Array(defintion.length).keys()].map((char, elementIdx) => {
+            // determine whether or not the user has typed the character they think is correct, and show red or blue depending on whether or not it's acutally correct
+            const styleToApply =
+              inputVal.length < char + 1
+                ? ""
+                : inputVal.split("")[elementIdx].toLowerCase() ==
+                  defintion.split("")[elementIdx].toLowerCase()
+                ? "correct"
+                : "incorrect";
+
+            return <div className={" " + styleToApply} key={elementIdx}></div>;
           })}
         </div>
-        <input type="text" placeholder="enter the defination..." />
+        <input
+          value={inputVal}
+          onChange={(e) => {
+            // if a user has entered the correct number of characters, we need to do a few things
+            // 1. if the entry is correct, we needd to increment attempts and move them on to the next word
+            // 2. if the entry is incorrect we need to increment attempts, and also if they
+            if (
+              e.target.value.length == defintion.length &&
+              e.target.value.length > inputVal.length
+            ) {
+              // compare words
+              handleIncrementAttempts();
+
+              if (e.target.value.toLowerCase() == defintion.toLowerCase()) {
+                // then the user has the correct input
+                if (wordIndex >= listToLearn.length - 1) {
+                  handleCompleteDay();
+                  return;
+                }
+                setWordIndex(wordIndex + 1);
+                setShowDefinition(false);
+                setInputVal("");
+                return;
+                // check if finished all the words, then end the day, otherwise go to next word
+              }
+            }
+
+            setInputVal(e.target.value);
+          }}
+          type="text"
+          placeholder="Enter the defintion..."
+        />
       </div>
 
       <div className="challenge-btns">
-        <button className="card-button-secondary">
-          <h6>I Quit 😞 </h6>
+        <button
+          onClick={() => {
+            handleChangePage(1);
+          }}
+          className="card-button-secondary"
+        >
+          <h6>Quit</h6>
         </button>
-        <button className="card-button-primary">
-          <h6>I forgot 🤔 </h6>
+        <button onClick={giveUp} className="card-button-primary">
+          <h6>I forgot</h6>
         </button>
       </div>
-      <ProgressBar />
+      <ProgressBar
+        remainder={(wordIndex * 100) / listToLearn.length}
+        text={`${wordIndex} / ${listToLearn.length}`}
+      />
     </section>
   );
 }
-
-export default Challenge;
