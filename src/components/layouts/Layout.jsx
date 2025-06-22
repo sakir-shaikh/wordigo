@@ -3,9 +3,10 @@ function Layout(prop) {
   const { children } = prop;
   return (
     <>
-      <header>
-        <h1 className="text-gradient">Wordigo</h1>
+      <header className="wordigo-logo-header">
+        <h1 className="wordigo-logo">Wordigo</h1>
       </header>
+
       <main>{children}</main>
       <footer>
         <small>created by</small>
