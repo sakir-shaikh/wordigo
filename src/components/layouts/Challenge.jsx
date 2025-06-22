@@ -16,7 +16,10 @@ export default function Challenge(props) {
   const [wordIndex, setWordIndex] = useState(0);
   const [inputVal, setInputVal] = useState("");
   const [showDefintion, setShowDefinition] = useState(false);
-  const [listToLearn, setListToLearn] = useState([...dayWords]);
+  const [listToLearn, setListToLearn] = useState([
+    ...dayWords,
+    ...shuffle(dayWords),
+  ]);
 
   const word = listToLearn[wordIndex];
   const isNewWord =
@@ -67,7 +70,9 @@ export default function Challenge(props) {
                   handleCompleteDay();
                   return;
                 }
-                setWordIndex(wordIndex + 1);
+                setWordIndex((prevWordIndex) => {
+                  return prevWordIndex + 1;
+                });
                 setShowDefinition(false);
                 setInputVal("");
                 return;

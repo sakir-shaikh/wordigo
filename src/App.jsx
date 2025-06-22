@@ -23,6 +23,12 @@ function App() {
       setName(localStorage.getItem("username"));
       setSelectedPage(1);
     }
+    //if the user is registered then we are checking if he/she has any previous attempts.
+    if (localStorage.getItem("attempts")) {
+      setAttempts((prevAttempts) => {
+        return parseInt(localStorage.getItem("attempts"));
+      });
+    }
   }, []);
 
   const dayWords = PLAN[day].map((_index) => {
